@@ -7,6 +7,10 @@ import page.HomePage;
 import page.ResultPage;
 import page.SignInPage;
 import util.WaiterWrapperClass;
+
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Test1 extends BaseTest {
@@ -34,6 +38,7 @@ public class Test1 extends BaseTest {
     public void openSearchResult() {
         homePage = new HomePage(driver);
         homePage.openPage();
+//TODO: чи вірно так реалізовувати незалежність тестів, щоб кожен раз починати з home page?
         String productName = "Dress";
         homePage.searchProductName(productName);
         String searchResultPageTitle = driver.getTitle();
@@ -41,7 +46,7 @@ public class Test1 extends BaseTest {
     }
 
     @Test
-    public void checkProductPrice() throws InterruptedException {
+    public void checkProductPrice() throws InterruptedException, ParseException {
         homePage = new HomePage(driver);
         homePage.openPage();
         String productName = "Dress";
@@ -51,10 +56,25 @@ public class Test1 extends BaseTest {
 //         Але експліціт вейт має бути після оголошення веб-ел-ту. Як тут бути?
 
         Thread.sleep(1000);
-        List<WebElement> foundItemPrices = driver
+        List<WebElement> foundItems = driver
                 .findElements(By.xpath("//*[@id='center_column']/ul/li//div[@itemprop='offers']"));
-        String s = foundItemPrices.get(1).getText();
-        System.out.println("text is" + s);
+        List<String> foundItemPrices = new ArrayList<>();
+        List<String> foundItemPricesOnlyNumbers = new ArrayList<>();
+        for (WebElement webElement : foundItems) {
+            foundItemPrices.add(webElement.getText());
+//            System.out.println("text is" + webElement.getText());
+        }
+        int j = 0;
+        List<Double> prices = new ArrayList<>();
+        for (int i = 1; i < foundItemPrices.size(); i=i+2) {
+            foundItemPricesOnlyNumbers.add(foundItemPrices.get(i).split(" ")[0]);
+            prices.add((Double) NumberFormat.getCurrencyInstance().parse(foundItemPrices.get(i).split(" ")[0]));
+            System.out.println("price is " + prices.get(j));
+            Assert.assertFalse((prices.get(j) > 16 && prices.get(j) > 51),
+                    "some price is not between $16...51");
+            j++;
+        }
+
 //        resultPage.getPriceFromFoundItem();
     }
 

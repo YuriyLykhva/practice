@@ -22,12 +22,13 @@ public class ResultPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    //TODO:this method does not work at all
     public String getTitle() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(2000);
         return driver.getTitle();
     }
 
-    //TODO: No magic numbers
+    //TODO:this method does not work at all
     public String getPriceFromFoundItem() {
         String s = foundItemPrices.get(0).getText();
         System.out.println(s);

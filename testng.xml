@@ -6,7 +6,6 @@
            <class name = "Test1" >
                <methods>
                    <include name="openHomePage" />
-
                    <include name="openSearchResult"/>
                    <include name="checkProductPrice"/>
                    <include name="openSignInPage"/>

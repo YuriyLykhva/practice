@@ -28,28 +28,27 @@ public class SignInPage extends BasePage {
         return this;
     }
 
+    //TODO:this method does not work at all
     public void inputNewUserEmail(String email) throws InterruptedException {
-        System.out.println("input email method started");
-        Thread.sleep(3000);
-//        WaiterWrapperClass.waitForElement(driver, emailField);
-        WebElement yy = driver.findElement(By.xpath("//input[@id='email_create']"));
-        Thread.sleep(3000);
 
-        System.out.println("email field appears");
-//        emailField.click();
-//        emailField.sendKeys(email);
-//        emailField.sendKeys(Keys.ENTER);
-        yy.click();
-        yy.sendKeys("here is my new email");
+//        Thread.sleep(3000);
+//        WebElement yy = driver.findElement(By.xpath("//input[@id='email_create']"));
+//        yy.click();
+//        yy.sendKeys("here is my new email");
+
+        WaiterWrapperClass.waitForElement(driver, newUserEmailField);
+        newUserEmailField.click();
+        newUserEmailField.sendKeys(email);
+        newUserEmailField.sendKeys(Keys.ENTER);
+
     }
 
+    //TODO:this method does not work at all
     public void loginExistingUser(String login, String password) throws InterruptedException {
-        System.out.println("Login started");
-        Thread.sleep(2000);
-
-
+        WaiterWrapperClass.waitForElement(driver, userEmailField);
         userEmailField.click();
         userEmailField.sendKeys(login);
+
         userPasswordField.click();
         userPasswordField.sendKeys(password);
         userPasswordField.sendKeys(Keys.ENTER);
