@@ -24,6 +24,7 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    @Override
     public HomePage openPage() {
         driver.get(HOMEPAGE_URL);
         return this;

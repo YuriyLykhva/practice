@@ -14,27 +14,22 @@ public class BaseTest {
     protected static final String NEW_USER_EMAIL = "test-test1234567890@gmail.com";
     protected static final String USER_EMAIL = "test1234567890@gmail.com";
     protected static final String USER_PASSWORD = "12345678";
-    protected static final String PRODUCT_NAME = "Dress";
-
 
     protected WebDriver driver;
-
 
     @BeforeClass
     @Parameters("browser")
     public void setup(@Optional("CHROME") BrowserEnum browser) {
 
-        System.setProperty("webdriver.chrome.driver",
-                "C:\\Users\\Yurii_Lykhva\\Downloads\\Yura\\chromedriver_win\\chromedriver.exe");
-//        System.setProperty("webdriver.gecko.driver",
-//                "src/test/resources/drivers/macos/geckodriver");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
 
         driver = WebDriverFactory.getDriver(browser);
     }
 
     @AfterClass
     public void tearDown() {
-//        driver.quit();
+        driver.quit();
         driver = null;
     }
 
