@@ -8,6 +8,15 @@ import org.testng.annotations.Parameters;
 
 public class BaseTest {
 
+    protected static final String EXPECTED_HOME_PAGE_TITLE = "My Store";
+    protected static final String EXPECTED_SIGN_IN_PAGE_TITLE = "Login - My Store";
+    protected static final String EXPECTED_SEARCH_RESULT_PAGE_TITLE = "Search - My Store";
+    protected static final String NEW_USER_EMAIL = "test-test1234567890@gmail.com";
+    protected static final String USER_EMAIL = "test1234567890@gmail.com";
+    protected static final String USER_PASSWORD = "12345678";
+    protected static final String PRODUCT_NAME = "Dress";
+
+
     protected WebDriver driver;
 
 
@@ -24,7 +33,7 @@ public class BaseTest {
     }
 
     @AfterClass
-    public void tearDown() throws InterruptedException {
+    public void tearDown() {
 //        driver.quit();
         driver = null;
     }

@@ -1,6 +1,5 @@
 package page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -28,28 +27,16 @@ public class SignInPage extends BasePage {
         return this;
     }
 
-    //TODO:this method does not work at all
-    public void inputNewUserEmail(String email) throws InterruptedException {
-
-//        Thread.sleep(3000);
-//        WebElement yy = driver.findElement(By.xpath("//input[@id='email_create']"));
-//        yy.click();
-//        yy.sendKeys("here is my new email");
-
+    public void inputNewUserEmail(String email) {
         WaiterWrapperClass.waitForElement(driver, newUserEmailField);
-        newUserEmailField.click();
         newUserEmailField.sendKeys(email);
         newUserEmailField.sendKeys(Keys.ENTER);
 
     }
 
-    //TODO:this method does not work at all
-    public void loginExistingUser(String login, String password) throws InterruptedException {
+    public void loginExistingUser(String login, String password) {
         WaiterWrapperClass.waitForElement(driver, userEmailField);
-        userEmailField.click();
         userEmailField.sendKeys(login);
-
-        userPasswordField.click();
         userPasswordField.sendKeys(password);
         userPasswordField.sendKeys(Keys.ENTER);
 

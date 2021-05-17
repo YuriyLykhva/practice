@@ -22,13 +22,11 @@ public class ResultPage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
-    //TODO:this method does not work at all
-    public String getTitle() throws InterruptedException {
-        Thread.sleep(2000);
+    public String getTitle() {
+//        Thread.sleep(2000);
         return driver.getTitle();
     }
 
-    //TODO:this method does not work at all
     public String getPriceFromFoundItem() {
         String s = foundItemPrices.get(0).getText();
         System.out.println(s);

@@ -1,6 +1,5 @@
 package page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -32,7 +31,6 @@ public class HomePage extends BasePage {
 
     public ResultPage searchProductName(String productName) {
         WaiterWrapperClass.waitForElement(driver, searchField);
-        searchField.click();
         searchField.sendKeys(productName);
         searchField.sendKeys(Keys.ENTER);
         return new ResultPage(driver);

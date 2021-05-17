@@ -1,12 +1,8 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
-import page.ResultPage;
-import page.SignInPage;
-import util.WaiterWrapperClass;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -15,45 +11,27 @@ import java.util.List;
 
 public class Test1 extends BaseTest {
 
-    public static HomePage homePage;
-    public static ResultPage resultPage;
-    public static SignInPage signInPage;
-
-    String expectedHomePageTitle = "My Store";
-    String expectedSignInPageTitle = "Login - My Store";
-    String expectedSearchResultPageTitle = "Search - My Store";
-    String newUserEmail = "test-test1234567890@gmail.com";
-    String userEmail = "test1234567890@gmail.com";
-    String userPassword = "12345678";
-
     @Test
     public void openHomePage() {
-        homePage = new HomePage(driver);
-        homePage.openPage();
+        new HomePage(driver).openPage();
         String homePageTitle = driver.getTitle();
-        Assert.assertEquals(homePageTitle, expectedHomePageTitle);
+        Assert.assertEquals(homePageTitle, EXPECTED_HOME_PAGE_TITLE);
     }
 
     @Test
     public void openSearchResult() {
-        homePage = new HomePage(driver);
-        homePage.openPage();
-//TODO: чи вірно так реалізовувати незалежність тестів, щоб кожен раз починати з home page?
-        String productName = "Dress";
-        homePage.searchProductName(productName);
+        new HomePage(driver)
+                .openPage()
+                .searchProductName(PRODUCT_NAME);
         String searchResultPageTitle = driver.getTitle();
-        Assert.assertEquals(searchResultPageTitle, expectedSearchResultPageTitle);
+        Assert.assertEquals(searchResultPageTitle, EXPECTED_SEARCH_RESULT_PAGE_TITLE);
     }
 
     @Test
     public void checkProductPrice() throws InterruptedException, ParseException {
-        homePage = new HomePage(driver);
-        homePage.openPage();
-        String productName = "Dress";
-        homePage.searchProductName(productName);
-
-//        TODO: коли вейтер (сліп) перед пошуком веб-елементу, то все ок.
-//         Але експліціт вейт має бути після оголошення веб-ел-ту. Як тут бути?
+        new HomePage(driver)
+                .openPage()
+                .searchProductName(PRODUCT_NAME);
 
         Thread.sleep(1000);
         List<WebElement> foundItems = driver
@@ -62,7 +40,6 @@ public class Test1 extends BaseTest {
         List<String> foundItemPricesOnlyNumbers = new ArrayList<>();
         for (WebElement webElement : foundItems) {
             foundItemPrices.add(webElement.getText());
-//            System.out.println("text is" + webElement.getText());
         }
         int j = 0;
         List<Double> prices = new ArrayList<>();
@@ -80,52 +57,27 @@ public class Test1 extends BaseTest {
 
     @Test
     public void openSignInPage() {
-        homePage.signIn();
+        new HomePage(driver)
+                .openPage()
+                .signIn();
         String signInPageTitle = driver.getTitle();
-        Assert.assertEquals(signInPageTitle, expectedSignInPageTitle);
+        Assert.assertEquals(signInPageTitle, EXPECTED_SIGN_IN_PAGE_TITLE);
     }
 
     @Test
-    public void createNewUser() throws InterruptedException {
-        homePage = new HomePage(driver);
-        homePage.openPage();
-        homePage.signIn();
-//TODO: This works
-
-        WebElement y = driver.findElement(By.xpath("//input[@id='email_create']"));
-        WaiterWrapperClass.waitForElement(driver, y);
-        y.click();
-        y.sendKeys(newUserEmail);
-
-//TODO: This does not work:
-
-//        signInPage.inputNewUserEmail(newUserEmail);
+    public void createNewUser() {
+        new HomePage(driver)
+                .openPage()
+                .signIn()
+                .inputNewUserEmail(NEW_USER_EMAIL);
     }
 
     @Test
-    public void loginTest() throws InterruptedException{
-        homePage = new HomePage(driver);
-        homePage.openPage();
-        homePage.signIn();
-
-        System.out.println("login test starts");
-        Thread.sleep(2000);
-
-//TODO: This works
-
-        WebElement loginField = driver.findElement(By.xpath("//input[@id='email']"));
-        WaiterWrapperClass.waitForElement(driver, loginField);
-        loginField.click();
-        loginField.sendKeys(userEmail);
-
-        WebElement passwordField = driver.findElement(By.xpath("//input[@id='passwd']"));
-        passwordField.click();
-        passwordField.sendKeys(userPassword);
-        passwordField.sendKeys(Keys.ENTER);
-
-//TODO: This does not work:
-
-//        signInPage.loginExistingUser(userEmail, userPassword);
+    public void loginTest() {
+        new HomePage(driver)
+                .openPage()
+                .signIn()
+                .loginExistingUser(USER_EMAIL, USER_PASSWORD);
     }
 
 
