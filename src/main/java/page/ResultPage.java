@@ -45,7 +45,6 @@ public class ResultPage extends BasePage {
             prices.add((Double) NumberFormat.getCurrencyInstance().parse(price));
             System.out.println("price is " + prices.get(j));
             System.out.println("price is " + price);
-            //TODO:
             j++;
         }
         return foundItemPricesOnlyNumbers;

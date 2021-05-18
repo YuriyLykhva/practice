@@ -31,6 +31,7 @@ public class Test1 extends BaseTest {
                 .openPage()
                 .searchProductName(PRODUCT_NAME)
                 .getPriceFromFoundItem();
+        //TODO:
 //        Assert.assertTrue((prices.get(j) > MIN_PRICE && prices.get(j) < MAX_PRICE),
 //        "some price is not in allowed range");
     }
@@ -50,17 +51,9 @@ public class Test1 extends BaseTest {
                 .openPage()
                 .signIn()
                 .inputNewUserEmail(NEW_USER_EMAIL);
+        //TODO: assert
     }
 
-    //TODO: to check user is logged in
-    @Test
-    public void loginTest() {
-        new HomePage(driver)
-                .openPage()
-                .signIn()
-                .loginExistingUser(USER_EMAIL, USER_PASSWORD);
 
-//        Assert.assertTrue()
-    }
 
 }

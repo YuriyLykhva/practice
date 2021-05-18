@@ -19,7 +19,7 @@ public class BaseTest {
 
     @BeforeClass
     @Parameters("browser")
-    public void setup(@Optional("CHROME") BrowserEnum browser) {
+    public void setup(@Optional("CHROME") BrowserEnum browser) {//@Optional("CHROME")
 
         System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
         System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
@@ -27,9 +27,9 @@ public class BaseTest {
         driver = WebDriverFactory.getDriver(browser);
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
         driver = null;
     }
 

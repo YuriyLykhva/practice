@@ -1,5 +1,6 @@
 package page;
 
+import model.User;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,6 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import util.WaiterWrapperClass;
 
 public class SignInPage extends BasePage {
+
+    private final String SIGNINPAGE_URL =
+            "http://automationpractice.com/index.php?controller=authentication&back=my-account";
 
     @FindBy(xpath = "//input[@id='email_create']")
     private WebElement newUserEmailField;
@@ -24,6 +28,7 @@ public class SignInPage extends BasePage {
     }
 
     public SignInPage openPage() {
+        driver.get(SIGNINPAGE_URL);
         return this;
     }
 
@@ -40,5 +45,13 @@ public class SignInPage extends BasePage {
         userPasswordField.sendKeys(password);
         userPasswordField.sendKeys(Keys.ENTER);
 
+    }
+
+    public MainPage loginViaModel(User user) {
+        WaiterWrapperClass.waitForElement(driver, userEmailField);
+        userEmailField.sendKeys(user.getUserEmail());
+        userPasswordField.sendKeys(user.getPassword());
+        userPasswordField.sendKeys(Keys.ENTER);
+        return new MainPage(driver);
     }
 }
