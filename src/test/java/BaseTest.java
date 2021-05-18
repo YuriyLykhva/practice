@@ -8,23 +8,27 @@ import org.testng.annotations.Parameters;
 
 public class BaseTest {
 
-    protected WebDriver driver;
+    protected static final String EXPECTED_HOME_PAGE_TITLE = "My Store";
+    protected static final String EXPECTED_SIGN_IN_PAGE_TITLE = "Login - My Store";
+    protected static final String EXPECTED_SEARCH_RESULT_PAGE_TITLE = "Search - My Store";
+    protected static final String NEW_USER_EMAIL = "test-test1234567890@gmail.com";
+    protected static final String USER_EMAIL = "test1234567890@gmail.com";
+    protected static final String USER_PASSWORD = "12345678";
 
+    protected WebDriver driver;
 
     @BeforeClass
     @Parameters("browser")
-    public void setup(@Optional("CHROME") BrowserEnum browser) {
+    public void setup(@Optional("CHROME") BrowserEnum browser) {//@Optional("CHROME")
 
-        System.setProperty("webdriver.chrome.driver",
-                "C:\\Users\\Yurii_Lykhva\\Downloads\\Yura\\chromedriver_win\\chromedriver.exe");
-//        System.setProperty("webdriver.gecko.driver",
-//                "src/test/resources/drivers/macos/geckodriver");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
 
         driver = WebDriverFactory.getDriver(browser);
     }
 
-    @AfterClass
-    public void tearDown() throws InterruptedException {
+    @AfterClass(alwaysRun = true)
+    public void tearDown() {
 //        driver.quit();
         driver = null;
     }

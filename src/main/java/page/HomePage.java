@@ -1,9 +1,6 @@
 package page;
 
-
-//import org.openqa.selenium.By;
-//import org.openqa.selenium.JavascriptExecutor;
-
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,16 +24,14 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    @Override
     public HomePage openPage() {
-//        driver.get(HOMEPAGE_URL);
-//        TODO: What's the difference?
-        driver.navigate().to(HOMEPAGE_URL);
+        driver.get(HOMEPAGE_URL);
         return this;
     }
 
     public ResultPage searchProductName(String productName) {
         WaiterWrapperClass.waitForElement(driver, searchField);
-        searchField.click();
         searchField.sendKeys(productName);
         searchField.sendKeys(Keys.ENTER);
         return new ResultPage(driver);

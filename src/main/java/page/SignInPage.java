@@ -1,6 +1,6 @@
 package page;
 
-import org.openqa.selenium.By;
+import model.User;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import util.WaiterWrapperClass;
 
 public class SignInPage extends BasePage {
+
+    private final String SIGNINPAGE_URL =
+            "http://automationpractice.com/index.php?controller=authentication&back=my-account";
 
     @FindBy(xpath = "//input[@id='email_create']")
     private WebElement newUserEmailField;
@@ -25,34 +28,30 @@ public class SignInPage extends BasePage {
     }
 
     public SignInPage openPage() {
+        driver.get(SIGNINPAGE_URL);
         return this;
     }
 
-    public void inputNewUserEmail(String email) throws InterruptedException {
-        System.out.println("input email method started");
-        Thread.sleep(3000);
-//        WaiterWrapperClass.waitForElement(driver, emailField);
-        WebElement yy = driver.findElement(By.xpath("//input[@id='email_create']"));
-        Thread.sleep(3000);
+    public void inputNewUserEmail(String email) {
+        WaiterWrapperClass.waitForElement(driver, newUserEmailField);
+        newUserEmailField.sendKeys(email);
+        newUserEmailField.sendKeys(Keys.ENTER);
 
-        System.out.println("email field appears");
-//        emailField.click();
-//        emailField.sendKeys(email);
-//        emailField.sendKeys(Keys.ENTER);
-        yy.click();
-        yy.sendKeys("here is my new email");
     }
 
-    public void loginExistingUser(String login, String password) throws InterruptedException {
-        System.out.println("Login started");
-        Thread.sleep(2000);
-
-
-        userEmailField.click();
+    public void loginExistingUser(String login, String password) {
+        WaiterWrapperClass.waitForElement(driver, userEmailField);
         userEmailField.sendKeys(login);
-        userPasswordField.click();
         userPasswordField.sendKeys(password);
         userPasswordField.sendKeys(Keys.ENTER);
 
+    }
+
+    public MainPage loginViaModel(User user) {
+        WaiterWrapperClass.waitForElement(driver, userEmailField);
+        userEmailField.sendKeys(user.getUserEmail());
+        userPasswordField.sendKeys(user.getPassword());
+        userPasswordField.sendKeys(Keys.ENTER);
+        return new MainPage(driver);
     }
 }
