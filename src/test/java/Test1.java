@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
-import java.text.ParseException;
+import java.util.List;
 
 public class Test1 extends BaseTest {
 
@@ -26,14 +26,15 @@ public class Test1 extends BaseTest {
     }
 
     @Test
-    public void checkProductPrice() throws ParseException {
-        new HomePage(driver)
+    public void checkProductPrice() {
+        List<Double> prices = new HomePage(driver)
                 .openPage()
                 .searchProductName(PRODUCT_NAME)
                 .getPriceFromFoundItem();
-        //TODO:
-//        Assert.assertTrue((prices.get(j) > MIN_PRICE && prices.get(j) < MAX_PRICE),
-//        "some price is not in allowed range");
+        for (Double price : prices) {
+            Assert.assertTrue((price > MIN_PRICE && price < MAX_PRICE),
+                    "some price is not in allowed range");
+        }
     }
 
     @Test
@@ -53,7 +54,5 @@ public class Test1 extends BaseTest {
                 .inputNewUserEmail(NEW_USER_EMAIL);
         //TODO: assert
     }
-
-
 
 }

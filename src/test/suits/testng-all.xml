@@ -10,7 +10,12 @@
                    <include name="checkProductPrice"/>
                    <include name="openSignInPage"/>
                    <include name="createNewUser"/>
-                   <include name="loginTest"/>
+<!--                   <include name="loginTest"/>-->
+               </methods>
+           </class>
+           <class name="LoginTest">
+               <methods>
+                    <include name="oneCanLogin" />
                </methods>
            </class>
        </classes>

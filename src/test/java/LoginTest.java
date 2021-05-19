@@ -2,18 +2,16 @@ import model.User;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.SignInPage;
-import util.UserFabric;
-
-import static util.UserFabric.USER_NAME;
+import util.UserFactory;
 
 public class LoginTest extends BaseTest {
     @Test
     public void oneCanLogin() {
-        User testUser = UserFabric.createUser();
+        User testUser = UserFactory.createUser();
         String loggedInUserName = new SignInPage(driver)
                 .openPage()
                 .loginViaModel(testUser)
                 .getLoggedInUserName();
-        Assert.assertEquals(USER_NAME, loggedInUserName);
+        Assert.assertEquals(testUser.getUserName(), loggedInUserName);
     }
 }

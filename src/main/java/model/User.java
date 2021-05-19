@@ -6,9 +6,16 @@ public class User {
 
     private String userEmail;
     private String password;
+    private String userName;
 
-    public User(String userName, String password) {
-        this.userEmail = userName;
+    public User(String userEmail, String password, String userName) {
+        this.userEmail = userEmail;
+        this.password = password;
+        this.userName = userName;
+    }
+
+    public User(String userEmail, String password) {
+        this.userEmail = userEmail;
         this.password = password;
     }
 
@@ -28,11 +35,16 @@ public class User {
         this.password = password;
     }
 
+    public String getUserName() {
+        return userName;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "userName='" + userEmail + '\'' +
+                "userEmail='" + userEmail + '\'' +
                 ", password='" + password + '\'' +
+                ", userName='" + userName + '\'' +
                 '}';
     }
 
