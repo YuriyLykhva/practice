@@ -10,6 +10,9 @@ public class WebDriverFactory {
 
     public static WebDriver getDriver(BrowserEnum browser) {
         if(driver == null) {
+            System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
+            System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
+
             driver = initDriver(browser);
         }
         return driver;

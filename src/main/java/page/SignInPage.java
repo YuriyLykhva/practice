@@ -39,13 +39,13 @@ public class SignInPage extends BasePage {
 
     }
 
-    public void loginExistingUser(String login, String password) {
-        WaiterWrapperClass.waitForElement(driver, userEmailField);
-        userEmailField.sendKeys(login);
-        userPasswordField.sendKeys(password);
-        userPasswordField.sendKeys(Keys.ENTER);
-
-    }
+//    public void loginExistingUser(String login, String password) {
+//        WaiterWrapperClass.waitForElement(driver, userEmailField);
+//        userEmailField.sendKeys(login);
+//        userPasswordField.sendKeys(password);
+//        userPasswordField.sendKeys(Keys.ENTER);
+//
+//    }
 
     public MainPage loginViaModel(User user) {
         WaiterWrapperClass.waitForElement(driver, userEmailField);

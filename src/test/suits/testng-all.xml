@@ -15,7 +15,7 @@
            </class>
            <class name="LoginTest">
                <methods>
-                    <include name="oneCanLogin" />
+                    <exclude name="oneCanLogin" />
                </methods>
            </class>
        </classes>

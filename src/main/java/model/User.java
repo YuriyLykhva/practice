@@ -1,5 +1,9 @@
 package model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.Objects;
 
 public class User {
@@ -18,7 +22,6 @@ public class User {
         this.userEmail = userEmail;
         this.password = password;
     }
-
     public String getUserEmail() {
         return userEmail;
     }

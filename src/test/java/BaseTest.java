@@ -18,10 +18,6 @@ public class BaseTest {
     @BeforeClass
     @Parameters("browser")
     public void setup(BrowserEnum browser) {//@Optional("CHROME")
-
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/drivers/chromedriver.exe");
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/drivers/geckodriver.exe");
-
         driver = WebDriverFactory.getDriver(browser);
     }
 
