@@ -48,6 +48,7 @@ public class SignInPage extends BasePage {
 //    }
 
     public MainPage loginViaModel(User user) {
+        logger.info("Login started");
         WaiterWrapperClass.waitForElement(driver, userEmailField);
         userEmailField.sendKeys(user.getUserEmail());
         userPasswordField.sendKeys(user.getPassword());

@@ -1,11 +1,10 @@
 import driver.BrowserEnum;
 import driver.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
+import util.TestListener;
 
+@Listeners(TestListener.class)
 public class BaseTest {
 
     protected static final String EXPECTED_HOME_PAGE_TITLE = "My Store";

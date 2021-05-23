@@ -1,5 +1,7 @@
 package page;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +13,7 @@ import util.WaiterWrapperClass;
 public class HomePage extends BasePage {
 
     private final String HOMEPAGE_URL = "http://automationpractice.com/index.php";
+
 
     @FindBy(xpath = "//input[@id='search_query_top']")
     private WebElement searchField;
@@ -26,6 +29,7 @@ public class HomePage extends BasePage {
 
     @Override
     public HomePage openPage() {
+        logger.info("Home page opens");
         driver.get(HOMEPAGE_URL);
         return this;
     }
@@ -34,12 +38,14 @@ public class HomePage extends BasePage {
         WaiterWrapperClass.waitForElement(driver, searchField);
         searchField.sendKeys(productName);
         searchField.sendKeys(Keys.ENTER);
+        logger.info("Result page opens");
         return new ResultPage(driver);
     }
 
     public SignInPage signIn() {
         WaiterWrapperClass.waitForElement(driver, buttonSignIn);
         buttonSignIn.click();
+        logger.info("Login page opens");
         return new SignInPage(driver);
     }
 
