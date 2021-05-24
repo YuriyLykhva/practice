@@ -32,20 +32,13 @@ public class SignInPage extends BasePage {
         return this;
     }
 
-    public void inputNewUserEmail(String email) {
+    public SignUpPage inputNewUserEmail(String email) {
+        logger.info("Sign Up started");
         WaiterWrapperClass.waitForElement(driver, newUserEmailField);
         newUserEmailField.sendKeys(email);
         newUserEmailField.sendKeys(Keys.ENTER);
-
+        return new SignUpPage(driver);
     }
-
-//    public void loginExistingUser(String login, String password) {
-//        WaiterWrapperClass.waitForElement(driver, userEmailField);
-//        userEmailField.sendKeys(login);
-//        userPasswordField.sendKeys(password);
-//        userPasswordField.sendKeys(Keys.ENTER);
-//
-//    }
 
     public MainPage loginViaModel(User user) {
         logger.info("Login started");

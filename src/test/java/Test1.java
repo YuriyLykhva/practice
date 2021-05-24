@@ -46,13 +46,4 @@ public class Test1 extends BaseTest {
         Assert.assertEquals(signInPageTitle, EXPECTED_SIGN_IN_PAGE_TITLE);
     }
 
-    @Test
-    public void createNewUser() {
-        new HomePage(driver)
-                .openPage()
-                .signIn()
-                .inputNewUserEmail(NEW_USER_EMAIL);
-        //TODO: assert
-    }
-
 }

@@ -1,1 +1,1 @@
-mvn -Dbrowser=CHROME -Drole=user -Dsurefie.suiteXmlFiles=src\test\suits\testng-1.xml clean test
+mvn -Dbrowser=CHROME -Drole=user -Dsurefire.suiteXmlFiles=src\test\suits\testng-all.xml clean test

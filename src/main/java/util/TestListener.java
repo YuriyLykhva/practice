@@ -46,7 +46,7 @@ public class TestListener implements ITestListener {
     }
 
     public void onFinish(ITestContext iTestContext) {
-
+        saveScreenshot();
     }
     //TODO: How to avoid passing browser in getDriver?
     private void saveScreenshot(){
