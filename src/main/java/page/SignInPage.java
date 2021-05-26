@@ -48,4 +48,13 @@ public class SignInPage extends BasePage {
         userPasswordField.sendKeys(Keys.ENTER);
         return new MainPage(driver);
     }
+
+    public MainPage loginViaCredentials(String email, String password) {
+        logger.info("Login started");
+        WaiterWrapperClass.waitForElement(driver, userEmailField);
+        userEmailField.sendKeys(email);
+        userPasswordField.sendKeys(password);
+        userPasswordField.sendKeys(Keys.ENTER);
+        return new MainPage(driver);
+    }
 }
