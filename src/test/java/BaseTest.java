@@ -20,9 +20,14 @@ public class BaseTest {
         driver = WebDriverFactory.getDriver(browser);
     }
 
+
+    @AfterMethod
+    public void clearCookie() {
+        driver.manage().deleteAllCookies();
+    }
     @AfterClass(alwaysRun = true)
     public void tearDown() {
-//        driver.quit();
+        driver.quit();
         driver = null;
     }
 

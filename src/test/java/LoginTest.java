@@ -2,7 +2,6 @@ import model.User;
 import org.testng.Assert;
 import org.testng.Reporter;
 import org.testng.annotations.Test;
-import page.MainPage;
 import page.SignInPage;
 import util.DataProviderClass;
 import util.UserFactory;
@@ -19,7 +18,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals(testUser.getUserName(), loggedInUserName);
     }
 
-    //TODO: How to run tests from data provider after 1st set of data?
+
     @Test(dataProvider = "credentials", dataProviderClass = DataProviderClass.class)
     public void loginWithUserFromDataProvider(String email, String password, String userName) {
         String loggedInUserName =
@@ -30,5 +29,14 @@ public class LoginTest extends BaseTest {
 //        new MainPage(driver).logOut();
 
         Assert.assertEquals(userName, loggedInUserName);
+    }
+
+
+    @Test(enabled = false, dataProvider = "testData", dataProviderClass = DataProviderClass.class)
+    public void test(String username, String password) {
+        Reporter.log(String.format("Test executed for username %s, password %s",
+                username, password), true);
+
+        Assert.assertTrue(true, "This is not true");
     }
 }
