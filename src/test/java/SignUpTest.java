@@ -17,6 +17,6 @@ public class SignUpTest extends BaseTest{
                 .inputNewUserEmail(newUserEmail).getAlertHeader();
 //                .registerButtonClick();
         System.out.println("Alert header is " + s);
-//        Assert.assertEquals();
+//TODO        Assert.assertEquals();
     }
 }

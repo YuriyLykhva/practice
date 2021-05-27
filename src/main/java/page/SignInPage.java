@@ -6,9 +6,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import util.WaiterWrapperClass;
 
 public class SignInPage extends BasePage {
+    public final Logger logger = LoggerFactory.getLogger(SignInPage.class);
 
     private final String SIGNINPAGE_URL =
             "http://automationpractice.com/index.php?controller=authentication&back=my-account";

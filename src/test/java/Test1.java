@@ -1,3 +1,4 @@
+import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
@@ -9,6 +10,7 @@ public class Test1 extends BaseTest {
     protected static final int MIN_PRICE = 16;
     protected static final int MAX_PRICE = 51;
 
+    @Story("My story")
     @Test
     public void openHomePage() {
         new HomePage(driver).openPage();
@@ -16,6 +18,7 @@ public class Test1 extends BaseTest {
         Assert.assertEquals(homePageTitle, EXPECTED_HOME_PAGE_TITLE);
     }
 
+    @Story("My story")
     @Test
     public void openSearchResult() {
         new HomePage(driver)

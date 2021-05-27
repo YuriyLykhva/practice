@@ -6,9 +6,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import util.WaiterWrapperClass;
 
 public class MainPage extends BasePage {
+    public final Logger logger = LoggerFactory.getLogger(MainPage.class);
 
     public MainPage(WebDriver driver) {
         super(driver);

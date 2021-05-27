@@ -1,16 +1,20 @@
 package page;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import util.WaiterWrapperClass;
 
 public class HomePage extends BasePage {
+    public final Logger logger = LoggerFactory.getLogger(HomePage.class);
+
 
     private final String HOMEPAGE_URL = "http://automationpractice.com/index.php";
 

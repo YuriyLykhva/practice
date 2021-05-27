@@ -9,9 +9,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import util.WaiterWrapperClass;
 
 public class SignUpPage extends BasePage {
+    public final Logger logger = LoggerFactory.getLogger(SignUpPage.class);
 
     private final String SIGNUPPAGE_URL =
             "http://automationpractice.com/index.php?controller=authentication";
@@ -37,7 +40,7 @@ public class SignUpPage extends BasePage {
     }
 
     public String getAlertHeader() {
-//        return alertMessageHeader.getText();
+//TODO        return alertMessageHeader.getText();
         WebElement alertHeaderText = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .xpath("//div[@class='alert alert-danger']/p")));

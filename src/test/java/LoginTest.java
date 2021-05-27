@@ -19,14 +19,13 @@ public class LoginTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "credentials", dataProviderClass = DataProviderClass.class)
+    @Test(enabled = true, dataProvider = "credentials", dataProviderClass = DataProviderClass.class)
     public void loginWithUserFromDataProvider(String email, String password, String userName) {
         String loggedInUserName =
                 new SignInPage(driver)
                 .openPage()
                 .loginViaCredentials(email, password)
                 .getLoggedInUserName();
-//        new MainPage(driver).logOut();
 
         Assert.assertEquals(userName, loggedInUserName);
     }
