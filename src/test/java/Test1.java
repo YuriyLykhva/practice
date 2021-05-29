@@ -1,9 +1,12 @@
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
 import java.util.List;
 
+@Feature("New feature")
 public class Test1 extends BaseTest {
 
     protected static final String PRODUCT_NAME = "Dress";
@@ -11,7 +14,7 @@ public class Test1 extends BaseTest {
     protected static final int MAX_PRICE = 51;
 
     @Story("My story")
-    @Test
+    @Test(description = "Home page title test")
     public void openHomePage() {
         new HomePage(driver).openPage();
         String homePageTitle = driver.getTitle();
@@ -19,7 +22,7 @@ public class Test1 extends BaseTest {
     }
 
     @Story("My story")
-    @Test
+    @Test(description = "Search result title test")
     public void openSearchResult() {
         new HomePage(driver)
                 .openPage()
@@ -28,7 +31,8 @@ public class Test1 extends BaseTest {
         Assert.assertEquals(searchResultPageTitle, EXPECTED_SEARCH_RESULT_PAGE_TITLE);
     }
 
-    @Test
+    @Epic("Check prices")
+    @Test(description = "Test whether prices are in expected range")
     public void checkProductPrice() {
         List<Double> prices = new HomePage(driver)
                 .openPage()
@@ -40,7 +44,8 @@ public class Test1 extends BaseTest {
         }
     }
 
-    @Test
+    @Story("Another story")
+    @Test(description = "Sign-in page title test")
     public void openSignInPage() {
         new HomePage(driver)
                 .openPage()

@@ -1,17 +1,14 @@
 package page;
 
-import model.User;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.WaiterWrapperClass;
 
 public class SignUpPage extends BasePage {
     public final Logger logger = LoggerFactory.getLogger(SignUpPage.class);
@@ -19,31 +16,26 @@ public class SignUpPage extends BasePage {
     private final String SIGNUPPAGE_URL =
             "http://automationpractice.com/index.php?controller=authentication";
 
-    @FindBy(xpath = "//button[@id='submitAccount']")
-    private WebElement buttonRegister;
-
-    @FindBy(xpath = "//div[@class='alert alert-danger']/p")
-    private WebElement alertMessageHeader;
-
     public SignUpPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Open Sign-Up Page")
     public SignUpPage openPage() {
         driver.get(SIGNUPPAGE_URL);
+        logger.info("Signup page opens");
         return this;
     }
 
-    public void registerButtonClick() {
-        buttonRegister.click();
+    @Step("Register button clicked")
+    public ControlPage registerButtonClick() {
+        WebElement registerButton = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
+                .until(ExpectedConditions.presenceOfElementLocated(By
+                        .xpath("//button[@id='submitAccount']")));
+        jsClickElement(registerButton);
+        logger.info("Register button clicked");
+        return new ControlPage(driver);
     }
 
-    public String getAlertHeader() {
-//TODO        return alertMessageHeader.getText();
-        WebElement alertHeaderText = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)
-                .until(ExpectedConditions.presenceOfElementLocated(By
-                        .xpath("//div[@class='alert alert-danger']/p")));
-        return alertHeaderText.getText();
-    }
 }

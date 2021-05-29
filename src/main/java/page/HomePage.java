@@ -1,8 +1,6 @@
 package page;
 
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.JavascriptExecutor;
+import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,12 +30,14 @@ public class HomePage extends BasePage {
     }
 
     @Override
+    @Step("Open Home Page")
     public HomePage openPage() {
         logger.info("Home page opens");
         driver.get(HOMEPAGE_URL);
         return this;
     }
 
+    @Step("Open Results Page with '{0}' products")
     public ResultPage searchProductName(String productName) {
         WaiterWrapperClass.waitForElement(driver, searchField);
         searchField.sendKeys(productName);
@@ -46,6 +46,7 @@ public class HomePage extends BasePage {
         return new ResultPage(driver);
     }
 
+    @Step("Open Sign-In Page")
     public SignInPage signIn() {
         WaiterWrapperClass.waitForElement(driver, buttonSignIn);
         buttonSignIn.click();

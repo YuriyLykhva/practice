@@ -1,5 +1,6 @@
 package page;
 
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -25,6 +26,7 @@ public class ResultPage extends BasePage {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+    @Step("Return prices")
     public List<Double> getPriceFromFoundItem() {
         WaiterWrapperClass.waitForElementLocatedBy(driver, By.xpath(productPriceXpath));
         List<String> foundItemPrices = foundItems.stream()

@@ -1,3 +1,4 @@
+import io.qameta.allure.Feature;
 import model.User;
 import org.testng.Assert;
 import org.testng.Reporter;
@@ -6,9 +7,10 @@ import page.SignInPage;
 import util.DataProviderClass;
 import util.UserFactory;
 
+@Feature("2 ways for login")
 public class LoginTest extends BaseTest {
 
-    @Test(enabled = false)
+    @Test(enabled = true, description = "Test login via User Factory")
     public void oneCanLogin() {
         User testUser = UserFactory.createUser();
         String loggedInUserName = new SignInPage(driver)
@@ -19,7 +21,8 @@ public class LoginTest extends BaseTest {
     }
 
 
-    @Test(enabled = true, dataProvider = "credentials", dataProviderClass = DataProviderClass.class)
+    @Test(enabled = false, description = "Test login with email and password from Data Provider",
+            dataProvider = "credentials", dataProviderClass = DataProviderClass.class)
     public void loginWithUserFromDataProvider(String email, String password, String userName) {
         String loggedInUserName =
                 new SignInPage(driver)
@@ -31,7 +34,8 @@ public class LoginTest extends BaseTest {
     }
 
 
-    @Test(enabled = false, dataProvider = "testData", dataProviderClass = DataProviderClass.class)
+    @Test(enabled = true, description = "Test for output data",
+            dataProvider = "testData", dataProviderClass = DataProviderClass.class)
     public void test(String username, String password) {
         Reporter.log(String.format("Test executed for username %s, password %s",
                 username, password), true);
