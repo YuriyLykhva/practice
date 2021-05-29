@@ -15,11 +15,9 @@ public class BaseTest {
     protected WebDriver driver;
 
     @BeforeClass
-    @Parameters("browser")
-    public void setup(@Optional("CHROME") BrowserEnum browser) {//@Optional("CHROME")
-        driver = WebDriverFactory.getDriver(browser);
+    public void setup() {
+        driver = WebDriverFactory.getDriver();
     }
-
 
     @AfterMethod
     public void clearCookie() {
