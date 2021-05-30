@@ -15,12 +15,14 @@ public class BaseTest {
     protected WebDriver driver;
 
     @BeforeClass
-    @Parameters("browser")
-    public void setup(@Optional("CHROME") BrowserEnum browser) {//@Optional("CHROME")
-        driver = WebDriverFactory.getDriver(browser);
+//TODO    @Parameters("browser")
+    public void setup() {//@Optional("CHROME") BrowserEnum browser) {//@Optional("CHROME")
+        driver = WebDriverFactory.getDriver();
     }
 
-
+    /**
+     *
+     */
     @AfterMethod
     public void clearCookie() {
         driver.manage().deleteAllCookies();

@@ -11,6 +11,9 @@ public class SignUpErrorTest extends BaseTest{
     public static String newUserEmail = StringUtil.getRandomGmail(EMAIL_LENGTH);
     public String expectedErrorMessageHeader = "There are 8 errors";
 
+    /**
+     *
+     */
     @Test(description = "Check error message header")
     public void createNewUserWithAllEmptyFields() {
         String alertHeader =

@@ -13,6 +13,9 @@ public class Test1 extends BaseTest {
     protected static final int MIN_PRICE = 16;
     protected static final int MAX_PRICE = 51;
 
+    /**
+     *
+     */
     @Story("My story")
     @Test(description = "Home page title test")
     public void openHomePage() {
@@ -21,6 +24,9 @@ public class Test1 extends BaseTest {
         Assert.assertEquals(homePageTitle, EXPECTED_HOME_PAGE_TITLE);
     }
 
+    /**
+     *
+     */
     @Story("My story")
     @Test(description = "Search result title test")
     public void openSearchResult() {
@@ -31,6 +37,9 @@ public class Test1 extends BaseTest {
         Assert.assertEquals(searchResultPageTitle, EXPECTED_SEARCH_RESULT_PAGE_TITLE);
     }
 
+    /**
+     *
+     */
     @Epic("Check prices")
     @Test(description = "Test whether prices are in expected range")
     public void checkProductPrice() {
@@ -44,6 +53,9 @@ public class Test1 extends BaseTest {
         }
     }
 
+    /**
+     *
+     */
     @Story("Another story")
     @Test(description = "Sign-in page title test")
     public void openSignInPage() {

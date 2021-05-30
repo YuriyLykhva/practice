@@ -9,7 +9,6 @@
                    <include name="openSearchResult"/>
                    <include name="checkProductPrice"/>
                    <include name="openSignInPage"/>
-                   <include name="createNewUser"/>
 <!--                   <include name="loginTest"/>-->
                </methods>
            </class>

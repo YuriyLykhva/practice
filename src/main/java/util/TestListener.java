@@ -54,7 +54,7 @@ public class TestListener implements ITestListener {
     //TODO: How to avoid passing browser in getDriver?
     private void saveScreenshot(){
         File screenCapture = ((TakesScreenshot) WebDriverFactory
-                .getDriver(CHROME))
+                .getDriver())
                 .getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(screenCapture, new File(
