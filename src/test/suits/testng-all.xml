@@ -9,14 +9,10 @@
                    <include name="openSearchResult"/>
                    <include name="checkProductPrice"/>
                    <include name="openSignInPage"/>
-<!--                   <include name="loginTest"/>-->
                </methods>
            </class>
-           <class name="LoginTest">
-               <methods>
-                    <exclude name="oneCanLogin" />
-               </methods>
-           </class>
+           <class name="LoginTest" />
+           <class name="SignUpErrorTest"/>
        </classes>
 
    </test>

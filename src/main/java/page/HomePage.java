@@ -11,6 +11,8 @@ import org.slf4j.LoggerFactory;
 import util.WaiterWrapperClass;
 
 public class HomePage extends BasePage {
+
+    //TODO: Is it possible to move logger from every page to the Base Page? I believe yes, but how to pass the name of each page?
     public final Logger logger = LoggerFactory.getLogger(HomePage.class);
 
 
@@ -29,14 +31,17 @@ public class HomePage extends BasePage {
         PageFactory.initElements(driver, this);
     }
 
+    //TODO logger.error here
     @Override
     @Step("Open Home Page")
     public HomePage openPage() {
         logger.info("Home page opens");
+        logger.error("Error");
         driver.get(HOMEPAGE_URL);
         return this;
     }
 
+    //TODO: I want to see step name in allure
     @Step("Open Results Page with '{0}' products")
     public ResultPage searchProductName(String productName) {
         WaiterWrapperClass.waitForElement(driver, searchField);
