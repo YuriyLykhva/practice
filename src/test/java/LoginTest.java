@@ -34,7 +34,7 @@ public class LoginTest extends BaseTest {
      * @param password
      * @param userName
      */
-    @Test(enabled = false, description = "Test login with email and password from Data Provider",
+    @Test(enabled = true, description = "Test login with email and password from Data Provider",
             dataProvider = "credentials", dataProviderClass = DataProviderClass.class)
     public void loginWithUserFromDataProvider(String email, String password, String userName) {
         String loggedInUserName =
@@ -47,11 +47,11 @@ public class LoginTest extends BaseTest {
     }
 
     /**
-     *
+     * solution with Reporter.log
      * @param username
      * @param password
      */
-    @Test(enabled = false, description = "Test for output data",
+    @Test(enabled = true, description = "Test for output data",
             dataProvider = "testData", dataProviderClass = DataProviderClass.class)
     public void test(String username, String password) {
         Reporter.log(String.format("Test executed for username %s, password %s",
@@ -60,15 +60,4 @@ public class LoginTest extends BaseTest {
         Assert.assertTrue(true, "This is not true");
     }
 
-    /**
-     *
-     * @throws IOException
-     */
-    @Test(enabled = false)
-    public void csvFileImportTest() throws IOException {
-        List<UserDTO> users = new CsvToBeanBuilder(new FileReader("src/main/resources/File.csv"))
-                .withType(UserDTO.class).build().parse();
-        users.forEach(System.out::println);
-
-    }
 }

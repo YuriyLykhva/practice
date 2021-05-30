@@ -1,17 +1,16 @@
 package page;
 
+import lombok.extern.slf4j.Slf4j;
 import model.User;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import util.WaiterWrapperClass;
 
+@Slf4j
 public class SignInPage extends BasePage {
-    public final Logger logger = LoggerFactory.getLogger(SignInPage.class);
 
     private final String SIGNINPAGE_URL =
             "http://automationpractice.com/index.php?controller=authentication&back=my-account";
@@ -36,7 +35,7 @@ public class SignInPage extends BasePage {
     }
 
     public SignUpPage inputNewUserEmail(String email) {
-        logger.info("Sign Up started");
+        log.info("Sign Up started");
         WaiterWrapperClass.waitForElement(driver, newUserEmailField);
         newUserEmailField.sendKeys(email);
         newUserEmailField.sendKeys(Keys.ENTER);
@@ -44,20 +43,22 @@ public class SignInPage extends BasePage {
     }
 
     public MainPage loginViaModel(User user) {
-        logger.info("Login started");
+        log.info("Login via model started");
         WaiterWrapperClass.waitForElement(driver, userEmailField);
         userEmailField.sendKeys(user.getUserEmail());
         userPasswordField.sendKeys(user.getPassword());
         userPasswordField.sendKeys(Keys.ENTER);
+        log.info("Login via model finished");
         return new MainPage(driver);
     }
 
     public MainPage loginViaCredentials(String email, String password) {
-        logger.info("Login started");
+        log.info("Login via credentials started");
         WaiterWrapperClass.waitForElement(driver, userEmailField);
         userEmailField.sendKeys(email);
         userPasswordField.sendKeys(password);
         userPasswordField.sendKeys(Keys.ENTER);
+        log.info("Login via credentials finished");
         return new MainPage(driver);
     }
 }

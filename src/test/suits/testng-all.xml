@@ -3,15 +3,8 @@
 <suite name="Suite1" verbose="1" >
    <test name="all">
        <classes>
-           <class name = "Test1" >
-               <methods>
-                   <include name="openHomePage" />
-                   <include name="openSearchResult"/>
-                   <include name="checkProductPrice"/>
-                   <include name="openSignInPage"/>
-               </methods>
-           </class>
-           <class name="LoginTest" />
+           <class name = "Test1" />
+<!--           <class name="LoginTest" />-->
            <class name="SignUpErrorTest"/>
        </classes>
 

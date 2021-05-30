@@ -1,11 +1,10 @@
 package model;
 
-//import lombok.AllArgsConstructor;
-//import lombok.Data;
-//import lombok.extern.slf4j.Slf4j;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
-import java.util.Objects;
-
+@Data
 public class User {
 
     private String userEmail;
@@ -26,16 +25,8 @@ public class User {
         return userEmail;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
-    }
-
     public String getPassword() {
         return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getUserName() {
@@ -51,16 +42,4 @@ public class User {
                 '}';
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return userEmail.equals(user.userEmail) && password.equals(user.password);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userEmail, password);
-    }
 }

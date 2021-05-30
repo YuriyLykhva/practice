@@ -1,17 +1,16 @@
 package page;
 
 import io.qameta.allure.Step;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class SignUpPage extends BasePage {
-    public final Logger logger = LoggerFactory.getLogger(SignUpPage.class);
 
     private final String SIGNUPPAGE_URL =
             "http://automationpractice.com/index.php?controller=authentication";
@@ -24,7 +23,7 @@ public class SignUpPage extends BasePage {
     @Step("Open Sign-Up Page")
     public SignUpPage openPage() {
         driver.get(SIGNUPPAGE_URL);
-        logger.info("Signup page opens");
+        log.info("Signup page opens");
         return this;
     }
 
@@ -34,7 +33,7 @@ public class SignUpPage extends BasePage {
                 .until(ExpectedConditions.presenceOfElementLocated(By
                         .xpath("//button[@id='submitAccount']")));
         jsClickElement(registerButton);
-        logger.info("Register button clicked");
+        log.info("Register button clicked");
         return new ControlPage(driver);
     }
 

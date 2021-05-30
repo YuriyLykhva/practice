@@ -1,6 +1,7 @@
 package page;
 
 import io.qameta.allure.Step;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -12,6 +13,7 @@ import util.WaiterWrapperClass;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Slf4j
 public class ResultPage extends BasePage {
 
     private final String productPriceXpath = "//div[@class='right-block']//span[@class='price product-price']";
@@ -28,6 +30,7 @@ public class ResultPage extends BasePage {
     }
     @Step("Return prices")
     public List<Double> getPriceFromFoundItem() {
+        log.info("Get prices method started");
         WaiterWrapperClass.waitForElementLocatedBy(driver, By.xpath(productPriceXpath));
         List<String> foundItemPrices = foundItems.stream()
                 .map(WebElement::getText)
@@ -35,6 +38,7 @@ public class ResultPage extends BasePage {
         List<Double> prices = foundItemPrices.stream()
                 .map(x -> Double.valueOf(x.replace("$", "")))
                 .collect(Collectors.toList());
+        log.info("Prices return");
         return prices;
     }
 

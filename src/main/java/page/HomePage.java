@@ -1,23 +1,18 @@
 package page;
 
 import io.qameta.allure.Step;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import util.WaiterWrapperClass;
 
+@Slf4j
 public class HomePage extends BasePage {
 
-    //TODO: Is it possible to move logger from every page to the Base Page? I believe yes, but how to pass the name of each page?
-    public final Logger logger = LoggerFactory.getLogger(HomePage.class);
-
-
     private final String HOMEPAGE_URL = "http://automationpractice.com/index.php";
-
 
     @FindBy(xpath = "//input[@id='search_query_top']")
     private WebElement searchField;
@@ -25,18 +20,17 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@title='Log in to your customer account']")
     private WebElement buttonSignIn;
 
-
     public HomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
 
-    //TODO logger.error here
+    //TODO logger.error is put here
     @Override
     @Step("Open Home Page")
     public HomePage openPage() {
-        logger.info("Home page opens");
-        logger.error("Error");
+        log.info("Home page opens");
+        log.error("Error");
         driver.get(HOMEPAGE_URL);
         return this;
     }
@@ -47,7 +41,7 @@ public class HomePage extends BasePage {
         WaiterWrapperClass.waitForElement(driver, searchField);
         searchField.sendKeys(productName);
         searchField.sendKeys(Keys.ENTER);
-        logger.info("Result page opens");
+        log.info("Result page opens");
         return new ResultPage(driver);
     }
 
@@ -55,7 +49,7 @@ public class HomePage extends BasePage {
     public SignInPage signIn() {
         WaiterWrapperClass.waitForElement(driver, buttonSignIn);
         buttonSignIn.click();
-        logger.info("Login page opens");
+        log.info("Login page opens");
         return new SignInPage(driver);
     }
 

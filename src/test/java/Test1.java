@@ -1,9 +1,14 @@
+import com.opencsv.bean.CsvToBeanBuilder;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import model.UserDTO;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
+
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 
 @Feature("New feature")
@@ -66,4 +71,15 @@ public class Test1 extends BaseTest {
         Assert.assertEquals(signInPageTitle, EXPECTED_SIGN_IN_PAGE_TITLE);
     }
 
+    /**
+     * CSV importer solution
+     * @throws IOException
+     */
+    @Test(enabled = true)
+    public void csvFileImportTest() throws IOException {
+        List<UserDTO> users = new CsvToBeanBuilder(new FileReader("src/main/resources/File.csv"))
+                .withType(UserDTO.class).build().parse();
+        users.forEach(System.out::println);
+
+    }
 }
