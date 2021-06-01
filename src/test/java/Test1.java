@@ -2,10 +2,13 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
+import model.User;
 import model.UserDTO;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
+import page.OrderPage;
+import util.UserFactory;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -73,13 +76,15 @@ public class Test1 extends BaseTest {
 
     /**
      * CSV importer solution
+     *
      * @throws IOException
      */
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void csvFileImportTest() throws IOException {
         List<UserDTO> users = new CsvToBeanBuilder(new FileReader("src/main/resources/File.csv"))
                 .withType(UserDTO.class).build().parse();
         users.forEach(System.out::println);
 
     }
+
 }
