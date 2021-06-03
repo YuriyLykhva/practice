@@ -14,11 +14,19 @@ public class ControlPage extends BasePage{
         super(driver);
     }
 
+    /**
+     * Implementation of BasePage method
+     * @return null
+     */
     @Override
     protected BasePage openPage() {
         return null;
     }
 
+    /**
+     * Getting header of alert message after user tries to sign up with blanked fields
+     * @return header of alert message
+     */
     public String getAlertHeader() {
         log.info("Get alert header method started");
         WebElement alertHeaderText = new WebDriverWait(driver, WAIT_TIMEOUT_SECONDS)

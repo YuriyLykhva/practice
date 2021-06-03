@@ -8,10 +8,10 @@ import util.UserFactory;
 public class HappyFlowTest extends BaseTest{
 
     /**
-     *
+     * Testing end-to-end flow
      */
-    @Epic("")
-    @Test(description = "")
+    @Epic("E2E flow")
+    @Test(description = "Testing end-to-end flow")
     public void addFirstPopularProductToCart() throws InterruptedException {
         User testUser = UserFactory.createUser();
         HomePage homePage = new HomePage(driver);

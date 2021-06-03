@@ -8,6 +8,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class WebDriverFactory {
 
     private static WebDriver driver;
+    //TODO: Implement passing browser via parameter
     private static final BrowserEnum browser = BrowserEnum.CHROME;
 
         public static WebDriver getDriver() {

@@ -16,18 +16,39 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ResultPage extends BasePage {
 
-    private final String productPriceXpath = "//div[@class='right-block']//span[@class='price product-price']";
+    /**
+     * Variables, constants
+     */
+    private final String productPriceXpath =
+            "//div[@class='right-block']//span[@class='price product-price']";
 
+    /**
+     * Web Elements
+     */
     @FindBys({@FindBy(xpath = productPriceXpath)})
     private List<WebElement> foundItems;
 
+    /**
+     * Implementation of BasePage method
+     * @return null
+     */
     protected BasePage openPage() {
         return null;
     }
+
+    /**
+     * Receiving driver for the page
+     * @param driver should be passed here
+     */
     public ResultPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
+    /**
+     * Collecting the prices of found products
+     * @return List of prices of found products
+     */
     @Step("Return prices")
     public List<Double> getPriceFromFoundItem() {
         log.info("Get prices method started");

@@ -1,7 +1,5 @@
 import com.opencsv.bean.CsvToBeanBuilder;
-import io.qameta.allure.Epic;
-import io.qameta.allure.Feature;
-import io.qameta.allure.Story;
+import io.qameta.allure.*;
 import model.User;
 import model.UserDTO;
 import org.testng.Assert;
@@ -15,8 +13,13 @@ import java.io.IOException;
 import java.util.List;
 
 @Feature("New feature")
+@Story("Test1 story")
+@Epic("All cases testing")
 public class Test1 extends BaseTest {
 
+    /**
+     * Variables, constants
+     */
     protected static final String PRODUCT_NAME = "Dress";
     protected static final int MIN_PRICE = 16;
     protected static final int MAX_PRICE = 51;
@@ -26,6 +29,7 @@ public class Test1 extends BaseTest {
      */
     @Story("My story")
     @Test(description = "Home page title test")
+    @Step("Step openHomePage")
     public void openHomePage() {
         new HomePage(driver).openPage();
         String homePageTitle = driver.getTitle();
@@ -37,6 +41,7 @@ public class Test1 extends BaseTest {
      */
     @Story("My story")
     @Test(description = "Search result title test")
+    @Step("Step openSearchResult")
     public void openSearchResult() {
         new HomePage(driver)
                 .openPage()
@@ -50,6 +55,7 @@ public class Test1 extends BaseTest {
      */
     @Epic("Check prices")
     @Test(description = "Test whether prices are in expected range")
+    @Step("Step checkProductPrice")
     public void checkProductPrice() {
         List<Double> prices = new HomePage(driver)
                 .openPage()
@@ -60,12 +66,13 @@ public class Test1 extends BaseTest {
                     "some price is not in allowed range");
         }
     }
-
+//TODO: complete documentation
     /**
      *
      */
     @Story("Another story")
     @Test(description = "Sign-in page title test")
+    @Step("Step openSignInPage")
     public void openSignInPage() {
         new HomePage(driver)
                 .openPage()
@@ -74,12 +81,13 @@ public class Test1 extends BaseTest {
         Assert.assertEquals(signInPageTitle, EXPECTED_SIGN_IN_PAGE_TITLE);
     }
 
+    //TODO: fix csv-files reading
     /**
      * CSV importer solution
      *
      * @throws IOException
      */
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void csvFileImportTest() throws IOException {
         List<UserDTO> users = new CsvToBeanBuilder(new FileReader("src/main/resources/File.csv"))
                 .withType(UserDTO.class).build().parse();
