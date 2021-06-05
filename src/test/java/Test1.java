@@ -1,18 +1,7 @@
-import com.opencsv.CSVReader;
-import com.opencsv.bean.CsvToBeanBuilder;
-import com.opencsv.exceptions.CsvException;
 import io.qameta.allure.*;
-import model.User;
-import model.UserDTO;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import page.HomePage;
-import page.OrderPage;
-import util.UserFactory;
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
 import java.util.List;
 
 @Feature("New feature")
@@ -28,7 +17,7 @@ public class Test1 extends BaseTest {
     protected static final int MAX_PRICE = 51;
 
     /**
-     *
+     * Testing home page title matches with expected one
      */
     @Story("My story")
     @Test(description = "Home page title test")
@@ -40,7 +29,7 @@ public class Test1 extends BaseTest {
     }
 
     /**
-     *
+     * Testing search page title matches with expected one
      */
     @Story("My story")
     @Test(description = "Search result title test")
@@ -54,7 +43,7 @@ public class Test1 extends BaseTest {
     }
 
     /**
-     *
+     * Testing that searched product prices are in expected range
      */
     @Epic("Check prices")
     @Test(description = "Test whether prices are in expected range")
@@ -69,9 +58,8 @@ public class Test1 extends BaseTest {
                     "some price is not in allowed range");
         }
     }
-//TODO: complete documentation
     /**
-     *
+     * Testing sign in page title matches with expected one
      */
     @Story("Another story")
     @Test(description = "Sign-in page title test")

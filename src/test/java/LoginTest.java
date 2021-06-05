@@ -1,5 +1,3 @@
-import com.opencsv.CSVReader;
-import com.opencsv.exceptions.CsvException;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import model.User;
@@ -8,12 +6,6 @@ import org.testng.annotations.Test;
 import page.SignInPage;
 import util.DataProviderClass;
 import util.UserFactory;
-
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
-
 
 @Feature("3 ways for login")
 public class LoginTest extends BaseTest {
