@@ -1,4 +1,6 @@
+import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBeanBuilder;
+import com.opencsv.exceptions.CsvException;
 import io.qameta.allure.*;
 import model.User;
 import model.UserDTO;
@@ -10,6 +12,7 @@ import util.UserFactory;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 @Feature("New feature")
@@ -79,20 +82,6 @@ public class Test1 extends BaseTest {
                 .signIn();
         String signInPageTitle = driver.getTitle();
         Assert.assertEquals(signInPageTitle, EXPECTED_SIGN_IN_PAGE_TITLE);
-    }
-
-    //TODO: fix csv-files reading
-    /**
-     * CSV importer solution
-     *
-     * @throws IOException
-     */
-    @Test(enabled = true)
-    public void csvFileImportTest() throws IOException {
-        List<UserDTO> users = new CsvToBeanBuilder(new FileReader("src/main/resources/File.csv"))
-                .withType(UserDTO.class).build().parse();
-        users.forEach(System.out::println);
-
     }
 
 }
