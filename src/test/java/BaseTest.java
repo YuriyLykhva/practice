@@ -1,3 +1,4 @@
+import driver.BrowserEnum;
 import driver.WebDriverFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.WebDriver;
@@ -18,11 +19,12 @@ public class BaseTest {
     protected WebDriver driver;
 
     /**
-     * Setting driver up
+     * Setting up driver for browser which is chosen by passing parameter
      */
     @BeforeClass
-//TODO    @Parameters("browser")
-    public void setup() {//@Optional("CHROME") BrowserEnum browser) {//@Optional("CHROME")
+    @Parameters("browser")
+    public void setup(BrowserEnum browser) {
+        WebDriverFactory.browser = browser;
         driver = WebDriverFactory.getDriver();
         log.info("Tests are starting!");
     }
