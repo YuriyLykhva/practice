@@ -1,0 +1,3 @@
+mvn -Dbrowser=CHROME -Drole=user -Dsurefire.suiteXmlFiles=src\test\suits\testng-all.xml clean test
+allure serve C:\Users\Yurii_Lykhva\IdeaProjects\Automationpractice\target\allure-results
+
